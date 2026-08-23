@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "ketchkeys",
+  "post": {
+    "dir": "dist/client",
+    "entrypoints": {
+      "default": {
+        "inline": true,
+        "entry": "splash.html"
+      },
+      "game": {
+        "entry": "game.html"
+      }
+    }
+  },
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "permissions": {
+    "media": true,
+    "redis": true,
+    "http": {
+      "enable": true,
+      "domains": [
+        "i.redd.it",
+        "preview.redd.it",
+        "external-preview.redd.it",
+        "www.redditstatic.com",
+        "styles.redditmedia.com",
+        "b.thumbs.redditmedia.com",
+        "a.thumbs.redditmedia.com"
+      ]
+    },
+    "reddit": {
+      "enable": true,
+      "scope": "moderator",
+      "asUser": [
+        "SUBMIT_POST",
+        "SUBMIT_COMMENT"
+      ]
+    }
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "Make a Text Art post",
+        "description": "Start a new post that turns a picture into letters",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/post-create"
+      }
+    ]
+  },
+  "forms": {
+    "publishForm": "/internal/form/publish-submit"
+  },
+  "triggers": {
+    "onAppInstall": "/internal/triggers/on-app-install",
+    "onPostSubmit": "/internal/triggers/make-ascii-public",
+    "onPostCreate": "/internal/triggers/make-ascii-public",
+    "onAutomoderatorFilterPost": "/internal/triggers/make-ascii-public"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build"
+  },
+  "dev": {
+    "subreddit": "ketchkeys"
+  }
+}

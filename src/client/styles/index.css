@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+/* Horizontal gallery: swipe without a visible scrollbar. */
+.gallery-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.gallery-scroll::-webkit-scrollbar {
+  display: none;
+}
